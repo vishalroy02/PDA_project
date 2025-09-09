@@ -1,0 +1,77 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0faf9; /* Light seafoam background */
+  color: #333;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* Section Heading (Doctor Name Group) */
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin: 40px 0 20px;
+  color: #178a81; /* Darker seafoam shade */
+  letter-spacing: 1px;
+  border-bottom: 2px solid #20b2aa;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Records Card */
+.record-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  border-left: 6px solid #20b2aa; /* Seafoam accent */
+}
+
+.record-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* Doctor Name (Inside Records if needed) */
+.record-card h3 {
+  margin: 0 0 10px;
+  color: #178a81;
+  font-size: 22px;
+}
+
+/* Patient Details */
+.record-card p {
+  margin: 6px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* Subtle Accent for Strong Labels */
+.record-card p strong {
+  color: #20b2aa;
+}
+.download-btn {
+  background: #20b2aa;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.download-btn:hover {
+  background: #178a81;
+}

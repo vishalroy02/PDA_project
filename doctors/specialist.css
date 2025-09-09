@@ -1,0 +1,121 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #e6f9f8;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-title {
+  text-align: center;
+  color: #004d4d;
+  margin-bottom: 30px;
+}
+
+.doctor-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.doctor-card {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(0, 128, 128, 0.1);
+  padding: 20px;
+  width: 550px;
+  align-items: flex-start;
+  gap: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 👇 Hover effect on doctor card */
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 128, 128, 0.2);
+}
+
+.left-section {
+  text-align: center;
+  min-width: 140px;
+}
+
+.doctor-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.availability {
+  font-weight: 600;
+  color: #007777;
+  font-size: 14px;
+}
+
+.right-section h3 {
+  margin: 0;
+  color: #007777;
+}
+
+.right-section p {
+  margin: 6px 0;
+  color: #333;
+  font-size: 15px;
+}
+
+.button-group {
+  margin-top: 12px;
+}
+
+.book-btn, .call-btn {
+  padding: 8px 14px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.book-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.book-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.call-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.call-btn:hover {
+  background-color: #1e7e34;
+  transform: scale(1.05);
+}
+.book-btn {
+    background-color: #00bfa6;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.book-btn:hover {
+    background-color: #009e87;
+}

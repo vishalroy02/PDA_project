@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Health Articles | Patient-Doctor Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #e0f6f1;
+    }
+
+    header {
+      background: #87ccc2;
+      color: black;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .search-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .search-filter input, .search-filter select {
+      padding: 10px;
+      font-size: 16px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+
+    .article-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    transition: 0.3s;
+  }
+
+  .article-card:hover {
+    transform: translateY(-5px);
+  }
+
+    .article-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #007d7b;
+    }
+
+    .article-meta {
+      font-size: 14px;
+      color: gray;
+      margin-bottom: 10px;
+    }
+
+    .article-summary {
+      font-size: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .search-filter {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Health Articles</h1>
+    <p>Trusted medical advice, tips, and insights for patients</p>
+  </header>
+
+  <div class="container">
+
+    <div class="search-filter">
+      <input type="text" id="searchInput" placeholder="Search articles...">
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="mental">Mental Health</option>
+        <option value="nutrition">Nutrition</option>
+        <option value="diabetes">Diabetes</option>
+        <option value="hydration">Hydration</option>
+        <option value="exercising">Exercising</option>
+      </select>
+    </div>
+
+    <div class="articles" id="articleList">
+
+      <!-- 🔹 Mental Health (5 articles) -->
+      <div class="article-card" data-category="mental">
+        <img src="https://coaching4good.com/wp-content/uploads/2020/10/Managing-Stress_web.png" width="245" height="200" alt="">
+        <div class="article-title">5 Tips to Manage Stress</div>
+        <div class="article-meta">By Dr. Neha Verma | 1 Aug 2025</div>
+        <div class="article-summary">Discover simple ways to reduce stress daily and improve your mental well-being.</div>
+      </div>
+      <div class="article-card" data-category="mental">
+        <img src="https://img.grouponcdn.com/iam/nARMu2MFDsLZLgQ2Q6vB/zW-2048x1242/v1/t2001x1212.webp" width="245" height="200" alt="">
+        <div class="article-title">Mindfulness Meditation Basics</div>
+        <div class="article-meta">By Dr. Rohan Das | 30 July 2025</div>
+        <div class="article-summary">Learn how mindfulness helps with focus, stress reduction, and emotional balance.</div>
+      </div>
+      <div class="article-card" data-category="mental">
+        <img src="https://midwestrecoverycenters.com/wp-content/uploads/2024/07/depositphotos_312590542-stock-photo-attractive-caucasian-brunette-dressed-in.webp" width="245" height="200" alt="">
+        <div class="article-title">Dealing with Anxiety</div>
+        <div class="article-meta">By Dr. Anita Roy | 28 July 2025</div>
+        <div class="article-summary">Practical tips to handle anxiety symptoms and lead a calmer life.</div>
+      </div>
+      <div class="article-card" data-category="mental">
+        <img src="https://richfieldmedicalgroup.com/wp-content/uploads/2022/02/RMG-2.15.22-How-a-Sleep-Schedule-Can-Revitalize-Your-Health-1280x720px-1024x576-1160x665.jpg" width="245" height="200" alt="">
+        <div class="article-title">Sleep and Mental Health</div>
+        <div class="article-meta">By Dr. Anjali Mehta | 27 July 2025</div>
+        <div class="article-summary">Explore how quality sleep impacts your emotional resilience and mood.</div>
+      </div>
+      <div class="article-card" data-category="mental">
+        <img src="https://melliobrien.com/wp-content/uploads/2018/08/negative-thinking.jpg" width="245" height="200" alt="">
+        <div class="article-title">Breaking Negative Thought Patterns</div>
+        <div class="article-meta">By Dr. Suresh Iyer | 26 July 2025</div>
+        <div class="article-summary">Cognitive strategies to identify and break free from harmful thinking loops.</div>
+      </div>
+      <div class="article-card" data-category="mental">
+        <img src="https://ens3xeax5jd.exactdn.com/wp-content/uploads/2023/11/woman-in-thought-sitting-on-couch.jpeg?strip=all&lossy=1&webp=80&avif=70&ssl=1" width="245" height="200" alt="">
+        <div class="article-title">Build Emotional Resilience</div>
+        <div class="article-meta">By Dr. Sana Mishra | 26 July 2025</div>
+        <div class="article-summary">The ability to adapt and bounce back from stress, challenges, and setbacks in life.</div>
+      </div>
+
+      <!-- 🔹 Nutrition (5 articles) -->
+      <div class="article-card" data-category="nutrition">
+        <img src="https://www.bhf.org.uk/-/media/images/information-support/heart-matters/2022/august-2022/nutrition/woman-with-food-shopping-ss-no-exp-620x400.png" width="245" height="200" alt="">
+        <div class="article-title">Eating Healthy on a Budget</div>
+        <div class="article-meta">By Dr. Arjun Mehta | 30 July 2025</div>
+        <div class="article-summary">Tips to eat healthy without overspending on groceries.</div>
+      </div>
+      <div class="article-card" data-category="nutrition">
+        <img src="https://www.naturemade.com/cdn/shop/articles/When_to_Take_Fiber_Supplements.jpg?v=1659733196" width="245" height="200" alt="">
+        <div class="article-title">Importance of Fiber</div>
+        <div class="article-meta">By Dr. Kavya Sharma | 29 July 2025</div>
+        <div class="article-summary">Why fiber is crucial for digestion and heart health.</div>
+      </div>
+      <div class="article-card" data-category="nutrition">
+        <img src="https://www.nutriblooms.com.au/wp-content/uploads/2024/02/Website-Banner-1024x576.png" width="245" height="200" alt="">
+        <div class="article-title">Plant-Based Diet Benefits</div>
+        <div class="article-meta">By Dr. Vikram Singh | 28 July 2025</div>
+        <div class="article-summary">How plant-based eating supports immunity and reduces disease risk.</div>
+      </div>
+      <div class="article-card" data-category="nutrition">
+        <img src="https://www.fastandup.in/nutrition-world/wp-content/uploads/2024/01/Protein-Sources-1-740x470.png" width="245" height="200" alt="">
+        <div class="article-title">Protein Sources for Vegetarians</div>
+        <div class="article-meta">By Dr. Priya Kapoor | 27 July 2025</div>
+        <div class="article-summary">Top protein-rich foods for vegetarian diets.</div>
+      </div>
+      <div class="article-card" data-category="nutrition">
+        <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/rockcms/2022-06/water-fruit-2x1-bn-220609-60b2ec.jpg" width="245" height="200" alt="">
+        <div class="article-title">Hydration through Foods</div>
+        <div class="article-meta">By Dr. Naveen Rao | 26 July 2025</div>
+        <div class="article-summary">Fruits and vegetables that help keep your body hydrated.</div>
+      </div>
+      <div class="article-card" data-category="nutrition">
+        <img src="https://static.toiimg.com/photo/109813664.cms" width="245" height="200" alt="">
+        <div class="article-title">Vitamins and Minerals for a Healthy Body</div>
+        <div class="article-meta">By Dr. Sanjana Roy | 27 July 2025</div>
+        <div class="article-summary">Why micronutrients matter While proteins, fats, and carbohydrates provide energy</div>
+      </div>
+
+      <!-- 🔹 Diabetes (5 articles) -->
+      <div class="article-card" data-category="diabetes">
+        <img src="https://i0.wp.com/glucare.health/wp-content/uploads/2024/07/diabetes-type2vs-type2-scaled-1.webp" width="245" height="200" alt="">
+        <div class="article-title">Understanding Type 2 Diabetes</div>
+        <div class="article-meta">By Dr. Kavita Rao | 28 July 2025</div>
+        <div class="article-summary">A beginner-friendly guide to symptoms, prevention, and control.</div>
+      </div>
+      <div class="article-card" data-category="diabetes">
+        <img src="https://ahaliadiabetes.org/wp-content/uploads/2020/03/DIABETOLOGY.jpg" width="245" height="200" alt="">
+        <div class="article-title">Diabetes and Diet</div>
+        <div class="article-meta">By Dr. Ritu Sen | 27 July 2025</div>
+        <div class="article-summary">Foods that stabilize blood sugar naturally.</div>
+      </div>
+      <div class="article-card" data-category="diabetes">
+        <img src="https://www.adityabirlacapital.com/healthinsurance/active-together/wp-content/uploads/2021/09/Exercises-for-diabetics_1-1200x675.jpg" width="245" height="200" alt="">
+        <div class="article-title">Exercise for Diabetics</div>
+        <div class="article-meta">By Dr. Harsh Mehta | 26 July 2025</div>
+        <div class="article-summary">Why regular movement lowers blood sugar spikes.</div>
+      </div>
+      <div class="article-card" data-category="diabetes">
+        <img src="https://c.ndtvimg.com/2024-04/r61cvo38_insulin-resistance-diabetes_625x300_18_April_24.jpg?im=FaceCrop,algorithm=dnn,width=545,height=307" width="245" height="200" alt="">
+        <div class="article-title">Insulin Resistance Explained</div>
+        <div class="article-meta">By Dr. Tanya Paul | 25 July 2025</div>
+        <div class="article-summary">A simple explanation of insulin resistance and remedies.</div>
+      </div>
+      <div class="article-card" data-category="diabetes">
+        <img src="https://i.dailymail.co.uk/i/pix/2017/11/10/23/463860A000000578-0-image-a-12_1510357549188.jpg" width="245" height="200" alt="">
+        <div class="article-title">Preventing Type 2 Diabetes</div>
+        <div class="article-meta">By Dr. Manish Gupta | 24 July 2025</div>
+        <div class="article-summary">Lifestyle changes that significantly cut your diabetes risk.</div>
+      </div>
+      <div class="article-card" data-category="diabetes">
+        <img src="https://c.ndtvimg.com/2022-04/obtnmopg_oats-for-diabetes_625x300_06_April_22.jpg?im=FeatureCrop,algorithm=dnn,width=345,height=250?q=50" width="245" height="200" alt="">
+        <div class="article-title">Glycemic Index and Its Role in Managing Diabetes</div>
+        <div class="article-meta">By Dr. Tanya Paul | 25 July 2025</div>
+        <div class="article-summary">Why GI Matters for Diabetics</div>
+      </div>
+
+      <!-- 🔹 Hydration (5 articles) -->
+      <div class="article-card" data-category="hydration">
+        <img src="https://nyboneandjoint.com/wp-content/uploads/2023/02/shutterstock_272962934.jpg" width="245" height="200" alt="">
+        <div class="article-title">Why Staying Hydrated is Important</div>
+        <div class="article-meta">By Dr. Sneha Roy | 25 July 2025</div>
+        <div class="article-summary">How water helps digestion, skin, and alertness.</div>
+      </div>
+      <div class="article-card" data-category="hydration">
+        <img src="https://www.yashodahealthcare.com/blogs/wp-content/uploads/2021/09/best-hospital-or-doctors-for-the-treatment-of-dehydration-in-Ghaziabad.jpeg" width="245" height="200" alt="">
+        <div class="article-title">Signs of Dehydration</div>
+        <div class="article-meta">By Dr. Nisha Malhotra | 24 July 2025</div>
+        <div class="article-summary">Early warning signals that you need more water.</div>
+      </div>
+      <div class="article-card" data-category="hydration">
+        <img src="https://images.onlymyhealth.com/imported/images/2023/April/05_Apr_2023/main-workout-hydration.jpg" width="245" height="200" alt="">
+        <div class="article-title">Hydration and Exercise</div>
+        <div class="article-meta">By Dr. Ajay Rana | 23 July 2025</div>
+        <div class="article-summary">Why athletes must manage fluid intake carefully.</div>
+      </div>
+      <div class="article-card" data-category="hydration">
+        <img src="https://images.indianexpress.com/2024/03/hydration.jpg?w=414" width="245" height="200" alt="">
+        <div class="article-title">Hydration and Exercise</div>
+        <div class="article-meta">By Dr. Charu Menon | 22 July 2025</div>
+        <div class="article-summary">From water to coconut water — ranking top options.</div>
+      </div>
+      <div class="article-card" data-category="hydration">
+        <img src="https://emi.parkview.com/media/Image/Dashboard_952_Skin-Hydrated_8_22.jpg" width="245" height="200" alt="">
+        <div class="article-title">Hydration and Skin Health</div>
+        <div class="article-meta">By Dr. Anushka Roy | 21 July 2025</div>
+        <div class="article-summary">How water intake improves complexion naturally.</div>
+      </div>
+      <div class="article-card" data-category="hydration">
+        <img src="https://i0.wp.com/risechiropracticandnutrition.com/wp-content/uploads/2024/08/LMNT-Blog-Post-Image.png?fit=1024%2C1024&ssl=1" width="245" height="200" alt="">
+        <div class="article-title">Role of Electrolytes in Hydration</div>
+        <div class="article-meta">By Dr. Meena Roy | 21 July 2025</div>
+        <div class="article-summary">Why Electrolytes Matter maintain proper hydration levels</div>
+      </div>
+
+      <!-- 🔹 Exercising (5 articles) -->
+      <div class="article-card" data-category="exercising">
+        <img src="https://images.yourstory.com/cs/7/1da9ec3014cc11e9a1b2b928167b6c62/breakfastlunchexercise-1604914948342.png" width="245" height="200" alt="">
+        <div class="article-title">Benefits of Regular Exercise</div>
+        <div class="article-meta">By Dr. Akriti Sen | 4 Aug 2025</div>
+        <div class="article-summary">Exercise supports heart, muscles, and mental health.</div>
+      </div>
+      <div class="article-card" data-category="exercising">
+        <img src="https://yogajala.com/wp-content/uploads/8-Benefits-Of-Morning-Yoga.jpg" width="245" height="200" alt="">
+        <div class="article-title">Morning Yoga Routine</div>
+        <div class="article-meta">By Dr. Prakash Nair | 3 Aug 2025</div>
+        <div class="article-summary">A simple yoga flow to start your day energized.</div>
+      </div>
+      <div class="article-card" data-category="exercising">
+        <img src="https://cdn.prod.website-files.com/66c501d753ae2a8c705375b6/6871253684b6613d22c49683_250416_ANYTIME_FITNESS_Blog_Terms%20to%20Know%20for%20Strength%20Routine_1-HERO-comp.jpg" width="245" height="200" alt="">
+        <div class="article-title">Strength Training Basics</div>
+        <div class="article-meta">By Dr. Kavya Patel | 2 Aug 2025</div>
+        <div class="article-summary">Why lifting weights is essential for all ages.</div>
+      </div>
+      <div class="article-card" data-category="exercising">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUOu_Xks4RDyB5tqTXzagb42tyZ3a9iI54gQ&s" width="245" height="200" alt="">
+        <div class="article-title">Cardio vs Strength Training</div>
+        <div class="article-meta">By Dr. Rahul Menon | 1 Aug 2025</div>
+        <div class="article-summary">Which type of workout burns more calories?</div>
+      </div>
+      <div class="article-card" data-category="exercising">
+        <img src="https://www.utphysicians.com/wp-content/uploads/2024/11/daily-stretching-article-850.jpg" width="245" height="200" alt="">
+        <div class="article-title">Stretching for Flexibility</div>
+        <div class="article-meta">By Dr. Rina Banerjee | 31 July 2025</div>
+        <div class="article-summary">Daily stretches to prevent stiffness and injuries.</div>
+      </div>
+      <div class="article-card" data-category="exercising">
+        <img src="https://www.helpguide.org/wp-content/uploads/2023/02/Mental-Health-Benefits-of-Exercise.jpeg" width="245" height="200" alt="">
+        <div class="article-title">The Role of Exercise in Boosting Mental Health</div>
+        <div class="article-meta">By Dr. Ritika Roy | 1 Aug 2025</div>
+        <div class="article-summary">Exercise isn’t just about physical fitness</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const articles = document.querySelectorAll(".article-card");
+
+    function filterArticles() {
+      const searchText = searchInput.value.toLowerCase();
+      const selectedCategory = categoryFilter.value;
+
+      articles.forEach(article => {
+        const title = article.querySelector(".article-title").textContent.toLowerCase();
+        const category = article.getAttribute("data-category");
+
+        const matchesSearch = title.includes(searchText);
+        const matchesCategory = selectedCategory === "all" || selectedCategory === category;
+
+        if (matchesSearch && matchesCategory) {
+          article.style.display = "block";
+        } else {
+          article.style.display = "none";
+        }
+      });
+    }
+
+    searchInput.addEventListener("input", filterArticles);
+    categoryFilter.addEventListener("change", filterArticles);
+  </script>
+
+</body>
+</html>

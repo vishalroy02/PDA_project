@@ -1,0 +1,168 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  /* Optional: subtle pattern or overlay */
+  background-color: #d4fbe3;
+  background-image: url('background.png');
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: center;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: rgba(169, 216, 182, 0.53); /* semi-transparent */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  /* Optional: add a subtle border */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #222;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+input[type="text"],
+input[type="email"],
+.password-wrapper input {
+  width: 100%;
+  height: 45px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 0 15px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.55);
+  box-shadow: 0 1.5px 6px rgba(0,0,0,0.03);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+.password-wrapper input:focus {
+  border: 1.5px solid #00c17c;
+  outline: none;
+  background: rgba(255,255,255,0.75);
+  box-shadow: 0 2px 12px rgba(0,193,124,0.08);
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+  color: #333;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.checkbox input {
+  margin-right: 8px;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #ccc;
+}
+
+.or-divider span {
+  padding: 0 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* ✅ FIXED Google Button Style */
+.google-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.google-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #00c17c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.signup-btn:hover {
+  background-color: #055228;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-link {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 16px auto;
+  max-width: 100px;
+  height: auto;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+  border-radius: 16px;
+  background: rgba(255,255,255,0.18);
+  padding: 8px;
+}

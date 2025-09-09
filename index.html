@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor Appointment Website</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <!-- Left: Hamburger + Logo + Title -->
+      <div class="header-left">
+        <div id="hamburger" class="hamburger">☰</div>
+        <img src="logo.png" alt="HealthConnect Logo" class="logo" style="height:40px; vertical-align:middle; margin-right:2px;">
+        <h1>HealthConnect</h1>
+      </div>
+
+      <!-- Right: Search + Language + Auth Buttons -->
+      <div class="header-right">
+        <div class="search-bar">
+          <input type="text" id="search" placeholder="Search">
+          <button onclick="searchSite()">🔍</button>
+        </div>
+
+        <div class="nav-buttons">
+            <button onclick="window.location.href='login/login.html'">Login</button>
+            <button onclick="window.location.href='login/register.html'">Register</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+      <a href="#">Home</a>
+      <a href="#about">About Us</a>
+      <a href="records/medrecord.html">View Medical Records</a>
+      <a href="article.html">Read Health Articles</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
+  </header>
+
+  <section class="specialization-section">
+  <h2>Find Doctors by Specialization</h2>
+  <div class="specialization-cards">
+    <div class="card" onclick="showDoctors('dentist')">
+      <img src="https://img.freepik.com/free-photo/dentist-doing-check-up-patient_23-2149206225.jpg" alt="Dentist">
+      <div class="card-title">Dentist</div>
+      
+    </div>
+    <div class="card" onclick="showDoctors('gynaecologist')">
+      <img src="https://thumbs.dreamstime.com/b/gynecologist-doctor-pregnant-woman-hospital-pregnancy-gynecology-medicine-health-care-people-concept-stethoscope-70948901.jpg" alt="Gynaecologist">
+      <div class="card-title">Gynaecologist</div>
+    </div>
+    <div class="card" onclick="showDoctors('neurologist')">
+      <img src="https://media.istockphoto.com/id/1439950058/photo/mri-of-head-of-elderly-woman-in-hands-of-doctor-standing-in-medical-ward-near-senior-patient.jpg?s=612x612&w=0&k=20&c=1eqAJPQiBIFs0BghN1zzCC3EmJyvsFm6JB-SpEwMKpw=" alt="Neurologist">
+      <div class="card-title">Neurologist</div>
+    </div>
+    <div class="card" onclick="showDoctors('physiotherapist')">
+      <img src="https://drashwanimaichand.com/assets/images/DrAshwani%20Service%20Photos/Physiotherapy.JPG" alt="Physiotherapist">
+      <div class="card-title">Physiotherapist</div>
+      </div>
+      <div class="card" onclick="showDoctors('cardiologist')">
+        <img src="data:image/jpeg;base64,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" alt="Cardiologist">
+        <div class="card-title">Cardiologist</div>
+      </div>
+      </div>
+  </div>
+</section>
+
+
+
+  <section id="about" class="about-section">
+    <h2>About Us</h2>
+    <p>
+      HealthConnect is a one-stop platform for booking appointments with verified doctors.
+      We aim to simplify healthcare access by providing teleconsultation, instant bookings,
+      and trusted medical advice — anytime, anywhere.
+    </p>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section">
+    <h2>What Our Patients Say</h2>
+    <div class="testimonials-container">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Booking an appointment was so easy and quick. The doctor was very professional and helpful!"</p>
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Patient 1" class="testimonial-avatar">
+          <span class="testimonial-name">Priya Sharma</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"HealthConnect made it possible to consult a specialist from home. Highly recommended!"</p>
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Patient 2" class="testimonial-avatar">
+          <span class="testimonial-name">Rahul Verma</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The platform is user-friendly and the support team is very responsive. Great experience!"</p>
+        <div class="testimonial-user">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Patient 3" class="testimonial-avatar">
+          <span class="testimonial-name">Anjali Mehta</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@healthconnect.com</p>
+    <p>Phone: +91 9876543210</p>
+    <p>&copy; 2025 HealthConnect. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

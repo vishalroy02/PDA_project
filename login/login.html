@@ -1,0 +1,106 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+  <!-- Firebase SDKs -->
+<!-- Firebase App (core SDK) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC5aPElhcr3dMrEfv5Ni9LsLq-I361njpk",
+    authDomain: "healthconnect-57945.firebaseapp.com",
+    projectId: "healthconnect-57945",
+    storageBucket: "healthconnect-57945.appspot.com",
+    messagingSenderId: "44402991408",
+    appId: "1:44402991408:web:3a8d3aed8f1193fa2668f5",
+    measurementId: "G-EML4R7WR6R"
+  };
+
+  // ✅ Firebase Initialize
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+</script>
+
+
+
+</head>
+<body>
+  <div class="form-container">
+    <h1 style="text-align: center;">LOGIN</h1>
+    <input type="email" id="loginEmail" placeholder="Your Email" required>
+
+    <div class="password-wrapper">
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <span class="toggle-eye" id="toggleLoginPassword">👁️</span>
+    </div>
+
+    <div class="checkbox">
+      <input type="checkbox" id="rememberMe">
+      <label for="rememberMe">Remember me</label>
+    </div>
+
+    <button class="signup-btn" onclick="login()">LOGIN</button>
+    <p id="loginMsg" style="text-align:center;"></p>
+
+    <p class="login-link">Don't have an account? <a href="register.html">Register</a></p>
+  </div>
+
+  <script>
+    const toggleLoginPassword = document.getElementById("toggleLoginPassword");
+    const loginPassword = document.getElementById("loginPassword");
+    toggleLoginPassword.addEventListener("click", function () {
+      const type = loginPassword.type === "password" ? "text" : "password";
+      loginPassword.type = type;
+      this.textContent = type === "password" ? "👁️" : "🙈";
+    });
+
+
+async function login() {
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+  const msg = document.getElementById("loginMsg");
+
+  msg.textContent = "⏳ Logging in...";
+
+  try {
+    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+    const user = userCredential.user;
+
+    // Get username from displayName set during registration
+    let userName = user.displayName;
+    if (!userName || userName.trim() === "") {
+      userName = "User"; 
+    }
+    localStorage.setItem("userName", userName);
+    localStorage.setItem("userEmail", user.email);
+
+    msg.textContent = "✅ Login successful!";
+    setTimeout(() => {
+      window.location.href = "/index.html"; 
+    }, 800);
+
+  } catch (error) {
+    let errorMsg = "❌ " + error.message;
+
+    if (error.code === "auth/user-not-found") {
+      errorMsg = "❌ No account found with this email.";
+    } else if (error.code === "auth/wrong-password") {
+      errorMsg = "❌ Incorrect password.";
+    } else if (error.code === "auth/invalid-email") {
+      errorMsg = "❌ Invalid email address.";
+    }
+
+    msg.textContent = errorMsg;
+  }
+}
+
+
+</script>  
+</body>
+</html>

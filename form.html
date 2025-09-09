@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Appointment | HealthConnect</title>
+  <link rel="stylesheet" href="form.css"> <!-- Link to external CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2>Book an Appointment</h2>
+    <form id="appointmentForm" onsubmit="handleSubmit(event)">
+
+      <label for="patientName">Patient Name:</label>
+      <input type="text" id="patientName" name="patientName" required>
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required min="0">
+
+      <label for="bloodGroup">Blood Group:</label>
+      <select id="bloodGroup" name="bloodGroup" required>
+        <option value="">-- Select Blood Group --</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+      </select>
+
+      <label for="issue">Health Issue / Concern:</label>
+      <textarea id="issue" name="issue" placeholder="Describe your health problem..." required></textarea>
+
+    
+      
+  <label for="appointment_date">Appointment Date:</label>
+  <input type="date" id="appointment_date" name="appointment_date" required>
+
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+ 
+  <!-- ✅ Make sure form.js is included -->
+   <script>
+  let today = new Date().toISOString().split("T")[0];
+  document.getElementById("appointment_date").setAttribute("min", today);
+</script>
+
+  <script src="form.js"></script>
+
+  
+
+</body>
+</html>
