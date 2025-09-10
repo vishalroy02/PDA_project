@@ -29,7 +29,7 @@ app.post("/appointments", (req, res) => {
   } = req.body;
 
   const newAppointment = {
-    id: appointments.length + 1,
+    id: Date.now().toString(), // ✅ unique ID (better than length+1)
     doctor: doctor.toUpperCase(), // ✅ Store doctor in CAPS
     specialization,
     clinic,
@@ -53,6 +53,21 @@ app.post("/appointments", (req, res) => {
 // ✅ GET: Fetch all appointments
 app.get("/appointments", (req, res) => {
   res.json(appointments);
+});
+
+// ✅ DELETE: Cancel appointment by ID
+app.delete("/appointments/:id", (req, res) => {
+  const { id } = req.params;
+  const initialLength = appointments.length;
+
+  appointments = appointments.filter(appt => appt.id !== id);
+
+  if (appointments.length === initialLength) {
+    return res.status(404).json({ success: false, message: "Appointment not found" });
+  }
+
+  console.log(`❌ Appointment with ID ${id} cancelled`);
+  res.json({ success: true, message: "Appointment cancelled" });
 });
 
 // Start server

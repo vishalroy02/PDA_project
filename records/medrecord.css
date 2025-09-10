@@ -75,3 +75,24 @@ h2 {
 .download-btn:hover {
   background: #178a81;
 }
+.cancel-btn {
+  background-color: #d9534f; /* red */
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 10px;
+}
+
+.cancel-btn:hover {
+  background-color: #c9302c; /* darker red on hover */
+  transform: scale(1.05);
+}
+
+.cancel-btn:active {
+  background-color: #a52824; /* even darker red on click */
+  transform: scale(0.95);
+}

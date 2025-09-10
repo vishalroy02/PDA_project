@@ -27,7 +27,6 @@ async function loadMedicalRecords() {
     }
 
     const records = await response.json();
-
     const recordsContainer = document.getElementById("recordsContainer");
     recordsContainer.innerHTML = "";
 
@@ -65,70 +64,108 @@ async function loadMedicalRecords() {
         <p class="appointment-date"><strong>Appointment Date:</strong> ${record.appointmentDate || "Not provided"}</p>
         <p class="booking-time"><strong>Booking Time:</strong> ${record.bookingTime || record.date}</p>
         <button class="download-btn">⬇ Download PDF</button>
+        <button class="cancel-btn">❌ Cancel Appointment</button>
       `;
 
       // PDF Download Handler
       card.querySelector(".download-btn").addEventListener("click", () => {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const pageWidth = doc.internal.pageSize.getWidth();
 
-  const pageWidth = doc.internal.pageSize.getWidth();
+              // Cancel Appointment Handler
+      card.querySelector(".cancel-btn").addEventListener("click", async () => {
+        if (!confirm("Are you sure you want to cancel this appointment?")) return;
 
-  // Title
-  doc.setFont("times", "bold");
-  doc.setFontSize(22);
-  doc.setTextColor(0, 51, 153);
-  doc.text("Doctor Appointment Record", pageWidth / 2, 40, { align: "center" });
+        try {
+          const response = await fetch(`http://localhost:5000/appointments/${record.id}`, {
+            method: "DELETE",
+          });
 
-  // Horizontal line
-  doc.setDrawColor(0, 51, 153);
-  doc.setLineWidth(0.7);
-  doc.line(30, 45, pageWidth - 30, 45);
+          if (!response.ok) {
+            throw new Error(`Failed to cancel appointment: ${response.status}`);
+          }
 
-  // Details in table-like format
-  doc.setFontSize(14);
-  doc.setTextColor(0, 0, 0);
-  doc.setFont("times", "normal");
+          alert("✅ Appointment cancelled successfully.");
+          card.remove(); // remove the card from UI
+        } catch (error) {
+          console.error("Cancel error:", error);
+          alert("⚠️ Failed to cancel appointment. Try again.");
+        }
+      });
 
-  const details = [
-    ["Doctor", doctorLine],
-    ["Patient", record.patientName],
-    ["Age", record.age],
-    ["Blood Group", record.bloodGroup],
-    ["Issue", record.issue],
-    ["Appointment Date", record.appointmentDate || "Not provided"],
-    ["Booking Time", record.bookingTime || record.date],
-  ];
 
-  let startY = 60;
-  const labelX = 35;
-  const valueX = 80;
-  const rowHeight = 12;
+        // Title
+        doc.setFont("times", "bold");
+        doc.setFontSize(22);
+        doc.setTextColor(0, 51, 153);
+        doc.text("Doctor Appointment Record", pageWidth / 2, 40, { align: "center" });
 
-  details.forEach(([label, value], i) => {
-    doc.setFont("times", "bold");
-    doc.text(`${label}:`, labelX, startY + i * rowHeight);
-    doc.setFont("times", "normal");
-    doc.text(String(value), valueX, startY + i * rowHeight);
-  });
+        // Horizontal line
+        doc.setDrawColor(0, 51, 153);
+        doc.setLineWidth(0.7);
+        doc.line(30, 45, pageWidth - 30, 45);
 
-  // Footer
-  doc.setFontSize(10);
-  doc.setTextColor(100);
-  doc.text(
-    `Generated on: ${new Date().toLocaleString()}`,
-    pageWidth - 35,
-    doc.internal.pageSize.getHeight() - 15,
-    { align: "right" }
-  );
+        // Details
+        doc.setFontSize(14);
+        doc.setTextColor(0, 0, 0);
+        doc.setFont("times", "normal");
 
-  // Border
-  doc.setDrawColor(0, 0, 0);
-  doc.setLineWidth(1);
-  doc.rect(10, 10, pageWidth - 20, doc.internal.pageSize.getHeight() - 20);
+        const details = [
+          ["Doctor", doctorLine],
+          ["Patient", record.patientName],
+          ["Age", record.age],
+          ["Blood Group", record.bloodGroup],
+          ["Issue", record.issue],
+          ["Appointment Date", record.appointmentDate || "Not provided"],
+          ["Booking Time", record.bookingTime || record.date],
+        ];
 
-  doc.save(`${record.patientName}_appointment.pdf`);
-});
+        let startY = 60;
+        const labelX = 35;
+        const valueX = 80;
+        const rowHeight = 12;
+
+        details.forEach(([label, value], i) => {
+          doc.setFont("times", "bold");
+          doc.text(`${label}:`, labelX, startY + i * rowHeight);
+          doc.setFont("times", "normal");
+          doc.text(String(value), valueX, startY + i * rowHeight);
+        });
+
+        // Footer
+        doc.setFontSize(10);
+        doc.setTextColor(100);
+        doc.text(
+          `Generated on: ${new Date().toLocaleString()}`,
+          pageWidth - 35,
+          doc.internal.pageSize.getHeight() - 15,
+          { align: "right" }
+        );
+
+        doc.save(`${record.patientName}_appointment.pdf`);
+      });
+
+      // Cancel Appointment Handler
+      card.querySelector(".cancel-btn").addEventListener("click", async () => {
+        if (!confirm("Are you sure you want to cancel this appointment?")) return;
+
+        try {
+          const response = await fetch(`http://localhost:5000/appointments/${record.id}`, {
+            method: "DELETE",
+          });
+
+          if (!response.ok) {
+            throw new Error(`Failed to cancel appointment: ${response.status}`);
+          }
+
+          alert("✅ Appointment cancelled successfully.");
+          card.remove();
+        } catch (error) {
+          console.error("Cancel error:", error);
+          alert("⚠️ Failed to cancel appointment. Try again.");
+        }
+      });
 
       recordsContainer.appendChild(card);
     });
